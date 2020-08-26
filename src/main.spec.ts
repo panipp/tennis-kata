@@ -1,7 +1,7 @@
 //
 // Sample outputs
 //
-
+import { updateGameScore,decideGameWinner,printScore } from './main';
 
 describe('Player 1', () => {
   it('should win the game when the score is 4-0', () => {
@@ -12,7 +12,6 @@ describe('Player 1', () => {
     // when
     const game = updateGameScore(player1Points, player2Points);
     const winner = decideGameWinner(game);
-
     // then
     expect(winner).toEqual('Player 1');
   });
