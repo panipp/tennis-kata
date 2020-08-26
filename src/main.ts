@@ -9,47 +9,30 @@ export function decideGameWinner(game: number[]) {
     return game[0] > game[1] ? 'Player 1' : 'Player 2';
 }
 
-export function printScore([player1Points, player2Points]: [number, number]) {
-    let player1 = '';
-    let player2 = '';
-    if (player1Points >= 3 && player2Points >= 3) {
-        if (player1Points === player2Points) {
+export function printScore(pointsArray: Array<number>) {
+    if (pointsArray[0] >= 3 && pointsArray[1] >= 3) {
+        if (pointsArray[0] === pointsArray[1]) {
             return 'deuce';
         } else {
-            if (player1Points > player2Points) {
+            if (pointsArray[0] > pointsArray[1]) {
                 return 'advantage player 1';
             } else {
                 return 'advantage player 2';
             }
         }
     }
-    switch (player1Points) {
-        case 0:
-            player1 = 'love';
-            break;
-        case 1:
-            player1 = 'fifteen';
-            break;
-        case 2:
-            player1 = 'thirty';
-            break;
-        case 3:
-            player1 = 'forty';
-            break;
-    }
-    switch (player2Points) {
-        case 0:
-            player2 = 'love';
-            break;
-        case 1:
-            player2 = 'fifteen';
-            break;
-        case 2:
-            player2 = 'thirty';
-            break;
-        case 3:
-            player2 = 'forty';
-            break;
-    }
-    return player1 + ' - ' + player2;
+    const result = pointsArray.map(
+        (obj: number) => {
+            switch (obj) {
+                case 0:
+                    return 'love';
+                case 1:
+                    return 'fifteen';
+                case 2:
+                    return 'thirty';
+                case 3:
+                    return 'forty';
+            }
+        });
+    return result[0] + ' - ' + result[1];
 }
